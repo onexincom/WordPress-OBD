@@ -1,0 +1,224 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: OBD\n"
+"POT-Creation-Date: 2015-01-16 19:19+0800\n"
+"PO-Revision-Date: 2015-01-16 19:19+0800\n"
+"Last-Translator: King@Onexin <onexin@qq.com>\n"
+"Language-Team: ONEXIN <onexin@qq.com>\n"
+"Language: zh\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7\n"
+"X-Poedit-Basepath: ../\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-SearchPath-0: tpl\n"
+"X-Poedit-SearchPath-1: .\n"
+
+#: onexin-bigdata.php:24 tpl/stats.tpl.php:14
+msgid "OBD BigData"
+msgstr "OBD大数据"
+
+#: onexin-bigdata.php:72
+msgid "Settings"
+msgstr "设置"
+
+#: onexin_bigdata.inc.php:69
+msgid "Updated"
+msgstr "更新"
+
+#: tpl/manage.tpl.php:9 tpl/stats.tpl.php:45
+msgid "Name"
+msgstr "名称"
+
+#: tpl/manage.tpl.php:12
+msgid "URL"
+msgstr "网址"
+
+#: tpl/manage.tpl.php:15
+msgid "Module"
+msgstr "模块"
+
+#: tpl/manage.tpl.php:18
+msgid "Catid"
+msgstr "分类"
+
+#: tpl/manage.tpl.php:21 tpl/stats.tpl.php:27 tpl/stats.tpl.php:44
+msgid "Status"
+msgstr "状态"
+
+#: tpl/manage.tpl.php:23
+msgid "0.Standby, 1.Posted, 3.Disable"
+msgstr "0为未发，1为已发，3为不发"
+
+#: tpl/manage.tpl.php:27
+msgid "Update"
+msgstr "提交"
+
+#: tpl/manage.tpl.php:27
+msgid "Cancel"
+msgstr "取消"
+
+#: tpl/settings.tpl.php:6 tpl/stats.tpl.php:9
+msgid "OBD Settings"
+msgstr "OBD设置"
+
+#: tpl/settings.tpl.php:13
+msgid "OBD Enable"
+msgstr "OBD启用"
+
+#: tpl/settings.tpl.php:16
+msgid "Yes"
+msgstr "是"
+
+#: tpl/settings.tpl.php:17
+msgid "No"
+msgstr "否"
+
+#: tpl/settings.tpl.php:22
+msgid "Via HTML Style:"
+msgstr "来源HTML格式："
+
+#: tpl/settings.tpl.php:29
+msgid "Simulated users:"
+msgstr "马甲用户名:"
+
+#: tpl/settings.tpl.php:32 tpl/settings.tpl.php:39 tpl/settings.tpl.php:44
+msgid "Multiple | separated"
+msgstr "多个用 | 分隔"
+
+#: tpl/settings.tpl.php:37
+msgid "Title add prefix"
+msgstr "添加标题前缀"
+
+#: tpl/settings.tpl.php:42
+msgid "Title add suffix"
+msgstr "添加标题后缀"
+
+#: tpl/settings.tpl.php:48
+msgid "Title filter"
+msgstr "标题过滤"
+
+#: tpl/settings.tpl.php:50 tpl/settings.tpl.php:55
+msgid ""
+"One per line, between the old words and the new words with lines connecting, "
+"e.g.: "
+msgstr "每行一条，旧词和新词之间用竖线连接，如："
+
+#: tpl/settings.tpl.php:53
+msgid "Content filter"
+msgstr "内容过滤"
+
+#: tpl/settings.tpl.php:60
+msgid "Rest Time:"
+msgstr "休息时间:"
+
+#: tpl/settings.tpl.php:66
+msgid "Trigger N/PV:"
+msgstr "触发 N/PV:"
+
+#: tpl/settings.tpl.php:72
+msgid "OID:"
+msgstr "OID:"
+
+#: tpl/settings.tpl.php:75
+msgid ""
+"Account ID, ONEXIN platform to obtain and maintain consistent: http://we."
+"onexin.com."
+msgstr "账号ID，到ONEXIN平台获取：http://we.onexin.com 并保持一致。"
+
+#: tpl/settings.tpl.php:79
+msgid "Token:"
+msgstr "Token:"
+
+#: tpl/settings.tpl.php:82
+msgid ""
+"Communication TOKEN, ONEXIN platform to obtain and maintain consistent: "
+"http://we.onexin.com."
+msgstr "通信TOKEN，到ONEXIN平台获取：http://we.onexin.com 并保持一致。"
+
+#: tpl/settings.tpl.php:86
+msgid "Save Changes"
+msgstr "保存"
+
+#: tpl/stats.tpl.php:6
+msgid "Help"
+msgstr "常见问题"
+
+#: tpl/stats.tpl.php:14
+msgid "Add New"
+msgstr "添加"
+
+#: tpl/stats.tpl.php:16
+msgid "Stats"
+msgstr "统计"
+
+#: tpl/stats.tpl.php:17
+msgid "Standby List"
+msgstr "未发列表"
+
+#: tpl/stats.tpl.php:26
+msgid "Enter the search content"
+msgstr "输入搜索内容"
+
+#: tpl/stats.tpl.php:28
+msgid "Start date:"
+msgstr "统计日期:"
+
+#: tpl/stats.tpl.php:32
+msgid "Search"
+msgstr "搜索"
+
+#: tpl/stats.tpl.php:46
+msgid "Catid / Module / Time"
+msgstr "分类 / 模块 / 时间"
+
+#: tpl/stats.tpl.php:47
+msgid "Options"
+msgstr "操作"
+
+#: tpl/stats.tpl.php:55
+msgid "Posted"
+msgstr "已发"
+
+#: tpl/stats.tpl.php:57
+msgid "Standby"
+msgstr "未发"
+
+#: tpl/stats.tpl.php:59
+msgid "Disable"
+msgstr "不发"
+
+#: tpl/stats.tpl.php:75
+msgid "Edit"
+msgstr "编辑"
+
+#: tpl/stats.tpl.php:75
+msgid "Delete"
+msgstr "删除"
+
+#: tpl/stats.tpl.php:80
+msgid "Select All"
+msgstr "全选"
+
+#: tpl/stats.tpl.php:81
+msgid "Batch Deletion"
+msgstr "批量删除"
+
+#: tpl/stats.tpl.php:83
+msgid "Batch Disable"
+msgstr "批量不发"
+
+#: tpl/stats.tpl.php:85
+msgid "Batch Standby"
+msgstr "批量未发"
+
+#~ msgid "Via Format:"
+#~ msgstr "来源格式："
+
+#~ msgid "Via HTML Style-1:"
+#~ msgstr "来源HTML样式1："
+
+#~ msgid "OBD Turn ON"
+#~ msgstr "OBD enable"
