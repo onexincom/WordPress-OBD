@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: King@Onexin
 Donate link: none
-Tags: bigdata, collection, seo, wordpress, baidu, google, post
+Tags: bigdata, collection, seo, wordpress, post
 Requires at least: 4.9
 Tested up to: 5.8
 Stable tag: 1.11.0
@@ -9,11 +9,11 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 5.6
 
-OBD BigData (Onexin BigData, referred to as OBD), open automatically batch cloud collection, analysis of massive Internet information for you, to capture, management, processing, and finishing as the help website more product useful information within a reasonable time. 
+OBD BigData (Onexin BigData, referred to as OBD), a collection tool from the cloud that can simulate users publishing articles.. 
 
 == Description ==
 
-OBD BigData (Onexin BigData, referred to as OBD), open automatically batch cloud collection, analysis of massive Internet information for you, to capture, management, processing, and finishing as the help website more product useful information within a reasonable time. 
+OBD BigData (Onexin BigData, referred to as OBD), a collection tool from the cloud that can simulate users publishing articles.. 
 
 
 == Installation ==
