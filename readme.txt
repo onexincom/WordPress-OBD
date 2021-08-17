@@ -28,10 +28,10 @@ OBD BigData (Onexin BigData, referred to as OBD), a collection tool from the clo
 A: Plug-in download: https://github.com/onexincom/WordPress-OBD/
 
 * Self-service application for authorization, log in to the big data platform:
-* http://we.onexin.com/?mod=bigdata&do=license
+* https://we.onexin.com/?mod=bigdata&do=license
 
 * The URL for applying for authorization is
-* http://your website address/wp-content/plugins/onexin-bigdata/api.php
+* https://your website address/onexin-bigdata/api.php
 
 * Note: Wordpress backstage vest must have permission to post.
 
