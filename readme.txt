@@ -24,7 +24,18 @@ OBD BigData (Onexin BigData, referred to as OBD), a collection tool from the clo
 
 == Frequently Asked Questions ==
 
-none
+= Q1: Preparations before installation: =
+A: Plug-in download: https://github.com/onexincom/WordPress-OBD/
+
+* Self-service application for authorization, log in to the big data platform:
+* http://we.onexin.com/?mod=bigdata&do=license
+
+* The URL for applying for authorization is
+* http://your website address/wp-content/plugins/onexin-bigdata/api.php
+
+* Note: Wordpress backstage vest must have permission to post.
+
+* Please see the [FAQs on clocol.com](https://www.clocol.com/faq.html).
 
 == Screenshots ==
 
