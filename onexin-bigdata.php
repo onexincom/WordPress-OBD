@@ -2,7 +2,7 @@
 /**
  * Plugin Name: OBD BigData
  * Description: OBD BigData (Onexin BigData, referred to as OBD), open automatically batch cloud collection, analysis of massive Internet information for you, to capture, management, processing, and finishing as the help website more product useful information within a reasonable time. Powered by ONEXIN.
- * Plugin URI: https://we.onexin.com/?mod=bigdata
+ * Plugin URI: https://github.com/onexincom/WordPress-OBD
  * Author: Onexin Inc.
  * Author URI: https://www.onexin.com
  * Version: 1.11.0
