@@ -28,7 +28,9 @@ none
 
 == Screenshots ==
 
-1. none
+1. Plugin add new url
+2. Plugin options page
+3. New options page
 
 
 
