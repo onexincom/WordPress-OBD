@@ -19,8 +19,8 @@ OBD BigData (Onexin BigData, referred to as OBD), a collection tool from the clo
 == Installation ==
 
 1. Unzip the php file and upload it into your blog
-1. Activate the plugin in plugin's section
-1. Now in "settings" menu you have a new submenu call "OBD Bigdata" where you can manage your links.
+2. Activate the plugin in plugin's section
+3. Now in "settings" menu you have a new submenu call "OBD Bigdata" where you can manage your links.
 
 == Frequently Asked Questions ==
 
