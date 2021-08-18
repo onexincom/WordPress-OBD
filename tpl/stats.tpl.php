@@ -1,5 +1,4 @@
 <?php if(!defined('OBD_CONTENT')) exit('Access Denied'); ?>
-<!--<script src="wp-includes/js/jquery/jquery.min.js"></script>-->
 
 <div id="screen-meta-links">
   <div id="contextual-help-link-wrap">
