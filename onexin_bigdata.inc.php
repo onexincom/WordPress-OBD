@@ -24,8 +24,8 @@ $_POST = onexin_bigdata_charset($_POST);
 
 $timestamp = time();
 $baseurl = '?page=onexin-bigdata.php';
-$bid = !empty($_GET['bid']) ? intval($_GET['bid']) : 0;
-$_GET['op'] = isset($_GET['op']) ? $_GET['op'] : "";
+$bid = !empty($_GET['bid']) ? intval(sanitize_key($_GET['bid'])) : 0;
+$_GET['op'] = isset($_GET['op']) ? sanitize_key($_GET['op']) : "";
 
 //-------------------------------------------------------------------------
 
@@ -39,17 +39,15 @@ if($_GET['op'] == 'settings') {
 	
 	### Form Processing
 	if(onexin_bigdata_submitcheck('optionssubmit')) {
-		// for all
-		$_POST = onexin_bigdata_stripslashes($_POST);
 		
 		//check_admin_referer( 'onexin-bigdata_settings' );
 		$options = array(
 			  'isopen'             => '1'
 			, 'isdelimiter'        => '1'
-			, 'title_prefix'       => addslashes($_POST['title_prefix'])
-			, 'title_suffix'       => addslashes($_POST['title_suffix'])
-			, 'filter_title'       => addslashes($_POST['filter_title'])
-			, 'filter_content'	   => addslashes($_POST['filter_content'])
+			, 'title_prefix'       => sanitize_text_field($_POST['title_prefix'])
+			, 'title_suffix'       => sanitize_text_field($_POST['title_suffix'])
+			, 'filter_title'       => sanitize_textarea_field($_POST['filter_title'])
+			, 'filter_content'	   => sanitize_textarea_field($_POST['filter_content'])
 			, 'worktime' 		   => '23|00|01|02|03|04|05|06|07'
 			, 'ignore' 		       => '1'
 			, 'perpv' 		       => '1'
@@ -57,14 +55,14 @@ if($_GET['op'] == 'settings') {
 		
 		if(isset($_POST['isopen'])) $options['isopen'] = (int)$_POST['isopen'];
 //		if(isset($_POST['isdelimiter'])) $options['isdelimiter'] = (int)$_POST['isdelimiter'];
-		if(isset($_POST['from_style2'])) $options['from_style2'] = addslashes($_POST['from_style2']);
-		if(isset($_POST['portal_users'])) $options['portal_users'] = addslashes($_POST['portal_users']);
-		if(isset($_POST['origviews'])) $options['origviews'] = addslashes($_POST['origviews']);
-		if(isset($_POST['worktime'])) $options['worktime'] = addslashes($_POST['worktime']);
+		if(isset($_POST['from_style2'])) $options['from_style2'] = wp_kses($_POST['from_style2'], 1);
+		if(isset($_POST['portal_users'])) $options['portal_users'] = sanitize_textarea_field($_POST['portal_users']);
+		if(isset($_POST['origviews'])) $options['origviews'] = sanitize_text_field($_POST['origviews']);
+		if(isset($_POST['worktime'])) $options['worktime'] = sanitize_text_field($_POST['worktime']);
 		
 		if(isset($_POST['perpv'])) $options['perpv'] = (int)$_POST['perpv'];
 		if(isset($_POST['oid']))   $options['oid'] = (int)$_POST['oid'];
-		if(isset($_POST['token'])) $options['token'] = addslashes($_POST['token']);
+		if(isset($_POST['token'])) $options['token'] = sanitize_text_field($_POST['token']);
 		
 		$update_views_queries = array();
 		$update_views_text = array();
@@ -128,14 +126,12 @@ if($_GET['op'] == 'settings') {
 				DB::query("INSERT INTO ".DB::table('plugin_onexin_bigdata')." (`name`, `url`, `k`, `status`, `dateline`, `catid`, `i`) VALUES ".implode(',', $urls).";");
 			}
 			// bookmark>
-			//print_r($ids);print_r($data);exit;
-			
-			//DB::query("INSERT INTO ".DB::table('plugin_onexin_bigdata')." (name, dateline, url, i, catid, status, k) VALUES ('$name', '$dateline', '$url', '$i', '$catid', '$status', '$k')");
 		}
 		
 		onexin_bigdata_output("200");
 	}else{
-		$res = DB::fetch_first("SELECT * FROM ".DB::table('plugin_onexin_bigdata')." WHERE bid='$bid'");	
+		$res = DB::fetch_first("SELECT * FROM ".DB::table('plugin_onexin_bigdata')." WHERE bid='$bid'");
+		// esc_html for /tpl/manage.tpl.php	
 		$res = onexin_bigdata_htmlspecialchars($res);
 		$res['url'] = str_replace('&amp;', '&', $res['url']);
 	}
@@ -200,7 +196,7 @@ if($_GET['op'] == 'settings') {
 	$perpage = empty($_GET['perpage'])?30:intval($_GET['perpage']);
 	$start = ($page-1)*$perpage;
 			
-	//ckstart($start, $perpage);
+	// list
 	$list = array();
 	$multi = "";
 	$count = DB::result_first("SELECT COUNT(*) FROM ".DB::table('plugin_onexin_bigdata')." WHERE $wheresql");	
@@ -266,10 +262,6 @@ function onexin_bigdata_htmlspecialchars($string){
 		}
 	}else{
 		$string = esc_html( $string );
-//		$string = str_replace(array('&', '"', '<', '>'), array('&amp;', '&quot;', '&lt;', '&gt;'), $string);
-//		if(strpos($string, '&amp;#') !== false) {
-//			$string = preg_replace('/&amp;((#(\d{3,6}|x[a-fA-F0-9]{4}));)/', '&\\1', $string);
-//		}
 	}
 	return $string;
 }
