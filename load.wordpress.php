@@ -23,8 +23,6 @@ load.wordpress.php
 
 if(!defined('ABSPATH')) {
 	exit('ABSPATH Denied');
-	//include_once dirname(dirname(dirname(__DIR__))) . '/wp-load.php';
-	//require_once ABSPATH . 'wp-admin/includes/image.php';
 }
 if(!defined('OBD_CONTENT')) {
 	define('OBD_CONTENT',		TRUE);
