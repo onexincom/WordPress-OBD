@@ -24,7 +24,7 @@ $_POST = onexin_bigdata_charset($_POST);
 
 $timestamp = time();
 $baseurl = '?page=onexin-bigdata.php';
-$bid = !empty($_GET['bid']) ? intval(sanitize_key($_GET['bid'])) : 0;
+$bid = !empty($_GET['bid']) ? sanitize_key($_GET['bid']) : 0; // page $bid
 $_GET['op'] = isset($_GET['op']) ? sanitize_key($_GET['op']) : "";
 
 //-------------------------------------------------------------------------
