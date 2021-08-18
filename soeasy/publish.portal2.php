@@ -54,6 +54,11 @@ $_POST['user_ID'] = $user_ID;
 	//}
 	
 //-----------------------------READY GO--------------------------------------------	
+        // sanitize
+		$_POST['title'] = sanitize_text_field($_POST['title']);
+		$_POST['content'] = wp_kses($_POST['content'], 1);
+		$_POST['catid'] = sanitize_text_field($_POST['catid']);
+		$_POST['tags'] = sanitize_text_field($_POST['tags']);
         	
 		// <!--nextpage-->
 		$_POST['content'] = preg_replace("/\<hr\>$/", '', $_POST['content']);	
