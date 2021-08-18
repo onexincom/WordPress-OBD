@@ -54,14 +54,19 @@ $_POST['user_ID'] = $user_ID;
 	//}
 	
 //-----------------------------READY GO--------------------------------------------	
-        	
+        // sanitize
+		$_POST['title'] = sanitize_text_field($_POST['title']);
+		$_POST['content'] = wp_kses($_POST['content'], 1);
+		$_POST['catid'] = sanitize_text_field($_POST['catid']);
+		$_POST['tags'] = sanitize_text_field($_POST['tags']);
+		
 		// <!--nextpage-->
 		$_POST['content'] = preg_replace("/\<hr\>$/", '', $_POST['content']);	
 		//if(!$_OBD['isdelimiter'])
 		$_POST['content'] = str_replace('<hr>', '', $_POST['content']);
 		
 		// censor
-		$_POST['content'] = onexin_bigdta_censor($_POST['content']);
+		$_POST['content'] = onexin_bigdata_censor($_POST['content']);
 		
 		$_POST['post_title'] = $_POST['title'];
 		$_POST['post_type'] = 'post';
@@ -90,7 +95,7 @@ onexin_bigdata_output("200", array("id"=>$post_ID));
 exit;
 
 //-----------------------------------------------
-function onexin_bigdta_censor($content){
+function onexin_bigdata_censor($content){
 	global $_OBD;
 
 	if($_OBD['filter_content']){
