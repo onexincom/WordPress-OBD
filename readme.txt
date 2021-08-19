@@ -9,11 +9,11 @@ License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 Requires PHP: 5.6
 
-OBD BigData (Onexin BigData, referred to as OBD), a collection tool from the cloud that can simulate users publishing articles.. 
+ONEXIN BigData (referred to as OBD), a collection tool from the cloud that can simulate users publishing articles.. 
 
 == Description ==
 
-OBD BigData (Onexin BigData, referred to as OBD), a collection tool from the cloud that can simulate users publishing articles.. 
+ONEXIN BigData (referred to as OBD), a collection tool from the cloud that can simulate users publishing articles.. 
 
 
 == Installation ==
