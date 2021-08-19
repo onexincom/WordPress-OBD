@@ -68,7 +68,7 @@ function onexin_bigdata_implode($array) {
 function onexin_bigdata_output($result = "200", $response = ""){
 	$output = array("status" => $result, "nonce" => md5(microtime().mt_rand()));		
 	if(!empty($response)) $output["response"] = $response;
-	echo (isset($_GET['callback'])) ? htmlspecialchars($_GET['callback']).'('.json_encode($output).')' : json_encode($output);	
+	echo (isset($_GET['callback'])) ? esc_url($_GET['callback']).'('.json_encode($output).')' : json_encode($output);	
 	exit();
 }
 
