@@ -49,8 +49,8 @@ if(!empty($_POST['import'])) $_POST['import'] = addslashes($_POST['import']);
 
 // CHECK TOKEN
 //if($_OBD['istoken']) {
-$k = trim($_GET['occhash']);
-$t = trim($_GET['occtime']);
+$k = esc_url($_GET['occhash']);
+$t = esc_url($_GET['occtime']);
 if($k != md5(md5($_OBD['token']).$t) || empty($_OBD['token']) || empty($t)){
 	$contentStr = empty($t) ? "Error signature" : "Invalid signature";
 	onexin_bigdata_output("100", $contentStr);
