@@ -17,10 +17,9 @@
 */
 
 //if(!defined('ABSPATH')) {
-	$url = 'https://we.onexin.com/?mod=bigdata&do=faq';
 	?>
 <script type="text/javascript">
-location.href = "<?php echo $url;?>";
+location.href = "https://we.onexin.com/?mod=bigdata&do=faq";
 </script>
 	<?php
 //}
