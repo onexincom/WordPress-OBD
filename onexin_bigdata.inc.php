@@ -23,7 +23,7 @@ $_GET = onexin_bigdata_charset($_GET);
 $_POST = onexin_bigdata_charset($_POST);
 
 $timestamp = time();
-$baseurl = '?page=onexin-bigdata.php';
+$baseurl = esc_html('?page=onexin-bigdata.php'); // page $baseurl
 $bid = !empty($_GET['bid']) ? sanitize_key($_GET['bid']) : 0; // page $bid
 $_GET['op'] = isset($_GET['op']) ? sanitize_key($_GET['op']) : "";
 
@@ -83,10 +83,10 @@ if($_GET['op'] == 'settings') {
 		// for all
 		$_POST = onexin_bigdata_stripslashes($_POST);
 	
-		$url = !empty($_POST['url']) ? addslashes($_POST['url']) : '';
-		$name = !empty($_POST['name']) ? addslashes($_POST['name']) : '';
-		$catid = !empty($_POST['catid']) ? addslashes($_POST['catid']) : 0;
-		$i = !empty($_POST['i']) ? addslashes($_POST['i']) : '';
+		$url = !empty($_POST['url']) ? sanitize_text_field($_POST['url']) : '';
+		$name = !empty($_POST['name']) ? sanitize_text_field($_POST['name']) : '';
+		$catid = !empty($_POST['catid']) ? sanitize_text_field($_POST['catid']) : 0;
+		$i = !empty($_POST['i']) ? sanitize_text_field($_POST['i']) : '';
 		$status = !empty($_POST['status']) ? intval($_POST['status']) : 0;
 		
 		$url = str_replace('&amp;', '&', $url);	
@@ -174,6 +174,10 @@ if($_GET['op'] == 'settings') {
 	exit();
 	
 }else{
+	// esc_url
+	$_GET['status'] = esc_url($_GET['status']);
+	$_GET['name'] = esc_url($_GET['name']);
+	$_GET['resid'] = esc_url($_GET['resid']);
 	
 	if($_GET['op'] != 'stats') {
 		$_GET['status'] = ($_GET['status']!='') ? (int)$_GET['status'] : '0';
