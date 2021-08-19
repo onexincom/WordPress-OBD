@@ -22,6 +22,15 @@ if(!defined('ABSPATH')) {
 //set_time_limit(60);
 ignore_user_abort();
 
+//------------------------Sanitize--------------------------------
+
+	$_POST['title'] = sanitize_text_field($_POST['title']);
+	$_POST['content'] = wp_kses($_POST['content'], 1);
+	$_POST['catid'] = sanitize_text_field($_POST['catid']);
+	$_POST['tags'] = sanitize_text_field($_POST['tags']);
+	$_POST['occurl'] = sanitize_text_field($_POST['occurl']);
+	$_POST['occsite'] = sanitize_text_field($_POST['occsite']);
+
 //------------------------TAG--------------------------------
 
 	$catid = explode(' ', $_POST['catid']);
@@ -53,12 +62,7 @@ $_POST['user_ID'] = $user_ID;
 		$_POST['content'] = str_replace('{OCC}', $_OBD['from_style2'], $_POST['content']);
 	//}
 	
-//-----------------------------READY GO--------------------------------------------	
-        // sanitize
-		$_POST['title'] = sanitize_text_field($_POST['title']);
-		$_POST['content'] = wp_kses($_POST['content'], 1);
-		$_POST['catid'] = sanitize_text_field($_POST['catid']);
-		$_POST['tags'] = sanitize_text_field($_POST['tags']);
+//-----------------------------READY GO--------------------------------------------
 		
 		// <!--nextpage-->
 		$_POST['content'] = preg_replace("/\<hr\>$/", '', $_POST['content']);	
@@ -100,7 +104,6 @@ function onexin_bigdata_censor($content){
 
 	if($_OBD['filter_content']){
 		$content = onexin_bigdata_filter($content, $_OBD['filter_content']);
-		//$_POST['content'] = str_replace(explode('|', $_OBD['filter_content']), '', $_POST['content']);
 	}
 	return $content;
 }
