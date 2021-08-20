@@ -174,10 +174,10 @@ if($_GET['op'] == 'settings') {
 	exit();
 	
 }else{
-	// esc_url
-	$_GET['status'] = esc_url($_GET['status']);
-	$_GET['name'] = esc_url($_GET['name']);
-	$_GET['resid'] = esc_url($_GET['resid']);
+	// esc & sanitize
+	$_GET['status'] = sanitize_text_field(esc_url_raw($_GET['status']));
+	$_GET['name'] = sanitize_text_field(esc_url_raw($_GET['name']));
+	$_GET['resid'] = sanitize_text_field(esc_url_raw($_GET['resid']));
 	
 	if($_GET['op'] != 'stats') {
 		$_GET['status'] = ($_GET['status']!='') ? (int)$_GET['status'] : '0';
