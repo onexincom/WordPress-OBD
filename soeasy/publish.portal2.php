@@ -24,7 +24,7 @@ ignore_user_abort();
 
 //------------------------Sanitize--------------------------------
 
-	$_POST['title'] = sanitize_text_field($_POST['title']);
+	$_POST['post_title'] = sanitize_text_field($_POST['title']);
 	$_POST['content'] = wp_kses($_POST['content'], 1);
 	$_POST['catid'] = sanitize_text_field($_POST['catid']);
 	$_POST['tags'] = sanitize_text_field($_POST['tags']);
@@ -72,7 +72,6 @@ $_POST['user_ID'] = $user_ID;
 		// censor
 		$_POST['content'] = onexin_bigdta_censor($_POST['content']);
 		
-		$_POST['post_title'] = $_POST['title'];
 		$_POST['post_type'] = 'post';
 		$_POST['comment_status'] = 'open';
 		$_POST['original_post_status'] = 'auto-draft';
