@@ -70,7 +70,7 @@ $_POST['user_ID'] = $user_ID;
 		$_content = str_replace('<hr>', '', $_content);
 		
 		// censor
-		$_content = onexin_bigdata_censor($_content);
+		$_POST['content'] = onexin_bigdata_censor($_content);
 
 		$_POST['post_title'] = sanitize_text_field($_title);
 		$_POST['post_type'] = 'post';
