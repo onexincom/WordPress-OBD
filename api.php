@@ -44,13 +44,13 @@ $_POST = onexin_bigdata_stripslashes($_POST);
 $_GET = onexin_bigdata_charset($_GET);
 $_POST = onexin_bigdata_charset($_POST);
 
-if(!empty($_POST['k'])) $_POST['k'] = addslashes($_POST['k']);
-if(!empty($_POST['import'])) $_POST['import'] = addslashes($_POST['import']);
+if(!empty($_POST['k'])) $_POST['k'] = sanitize_text_field($_POST['k']);
+if(!empty($_POST['import'])) $_POST['import'] = sanitize_text_field($_POST['import']);
 
 // CHECK TOKEN
 //if($_OBD['istoken']) {
-$k = esc_url($_GET['occhash']);
-$t = esc_url($_GET['occtime']);
+$k = esc_url_raw($_GET['occhash']);
+$t = esc_url_raw($_GET['occtime']);
 if($k != md5(md5($_OBD['token']).$t) || empty($_OBD['token']) || empty($t)){
 	$contentStr = empty($t) ? "Error signature" : "Invalid signature";
 	onexin_bigdata_output("100", $contentStr);
@@ -91,8 +91,8 @@ if(empty($_POST['bigdata'])){
 	}
 	
 	$timestamp = time();
-	$catid = $_POST['catid'];
-	$import = $_POST['import'];
+	$catid = sanitize_text_field($_POST['catid']);
+	$import = sanitize_text_field($_POST['import']);
 	$urls = $inserts = array();	
 	foreach($_POST['urls'] as $key => $val){
 		$catid = !empty($val['catid']) ? $val['catid'] : $_POST['catid'];
