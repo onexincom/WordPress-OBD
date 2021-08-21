@@ -24,23 +24,23 @@ ignore_user_abort();
 
 //------------------------Sanitize--------------------------------
 
-	$_POST['title'] = sanitize_text_field($_POST['title']);
-	$_POST['content'] = wp_kses($_POST['content'], 1);
-	$_POST['catid'] = sanitize_text_field($_POST['catid']);
-	$_POST['tags'] = sanitize_text_field($_POST['tags']);
-	$_POST['occurl'] = sanitize_text_field($_POST['occurl']);
-	$_POST['occsite'] = sanitize_text_field($_POST['occsite']);
+	$_title = sanitize_text_field($_POST['title']);
+	$_content = wp_kses($_POST['content'], 1);
+	$_catid = sanitize_text_field($_POST['catid']);
+	$_tags = sanitize_text_field($_POST['tags']);
+	$_occurl = sanitize_text_field($_POST['occurl']);
+	$_occsite = sanitize_text_field($_POST['occsite']);
 
 //------------------------TAG--------------------------------
 
-	$catid = explode(' ', $_POST['catid']);
-	$_POST['catid'] = $catid[0];//fid
-	$_POST['tags'] = !empty($catid[1]) ? $catid[1] : '';//tag
+	$catid = explode(' ', $_catid);
+	$_catid = $catid[0];//fid
+	$_tags = !empty($catid[1]) ? $catid[1] : '';//tag
 
 //------------------------ONLYONE USERNAME--------------------------------
 
-	$catid = explode('#', $_POST['catid']);
-	$_POST['catid'] = $catid[0];//fid
+	$catid = explode('#', $_catid);
+	$_catid = $catid[0];//fid
 	$vestarr = !empty($catid[1]) ? $catid[1] : $_OBD['portal_users'];//username
 	
 	$vest = addslashes(onexin_bigdata_randone($vestarr));
@@ -57,31 +57,31 @@ $_POST['user_ID'] = $user_ID;
 
 	//if($_OBD['from_style2']){
 		$_OBD['from_style2'] = str_replace(
-			array('{occurl}', '{occsite}', '{occtitle}'), array($_POST['occurl'], $_POST['occsite'], $_POST['title']), 
+			array('{occurl}', '{occsite}', '{occtitle}'), array($_occurl, $_occsite, $_title), 
 				$_OBD['from_style2']);
-		$_POST['content'] = str_replace('{OCC}', $_OBD['from_style2'], $_POST['content']);
+		$_content = str_replace('{OCC}', $_OBD['from_style2'], $_content);
 	//}
 	
 //-----------------------------READY GO--------------------------------------------
 		
 		// <!--nextpage-->
-		$_POST['content'] = preg_replace("/\<hr\>$/", '', $_POST['content']);	
+		$_content = preg_replace("/\<hr\>$/", '', $_content);	
 		//if(!$_OBD['isdelimiter'])
-		$_POST['content'] = str_replace('<hr>', '', $_POST['content']);
+		$_content = str_replace('<hr>', '', $_content);
 		
 		// censor
-		$_POST['content'] = onexin_bigdata_censor($_POST['content']);
+		$_POST['content'] = onexin_bigdata_censor($_content);
 
-		$_POST['post_title'] = sanitize_text_field($_POST['title']);
+		$_POST['post_title'] = sanitize_text_field($_title);
 		$_POST['post_type'] = 'post';
 		$_POST['comment_status'] = 'open';
 		$_POST['original_post_status'] = 'auto-draft';
 		$_POST['original_publish'] = 'Publish';
 		$_POST['publish'] = 'Publish';
-		$_POST['post_category'] = explode('|', $_POST['catid']);
+		$_POST['post_category'] = explode('|', $_catid);
 		
-		$_POST['tax_input']['post_tag'] = $_POST['tags'];//tag
-		//$_POST['post_name'] = $_POST['title'];//slug
+		$_POST['tax_input']['post_tag'] = $_tags;//tag
+		//$_POST['post_name'] = $_title;//slug
 		
 		include_once ABSPATH . 'wp-admin/includes/post.php';
 		  
