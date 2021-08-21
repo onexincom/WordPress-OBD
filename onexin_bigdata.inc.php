@@ -25,17 +25,17 @@ $_POST = onexin_bigdata_charset($_POST);
 $timestamp = time();
 $baseurl = esc_html('?page=onexin-bigdata.php'); // page $baseurl
 $bid = !empty($_GET['bid']) ? sanitize_key($_GET['bid']) : 0; // page $bid
-$_GET['op'] = isset($_GET['op']) ? sanitize_key($_GET['op']) : "";
+$op = isset($_GET['op']) ? sanitize_key($_GET['op']) : "";
 
 //-------------------------------------------------------------------------
 
 	// check admin
 	$user_id = get_current_user_id();
 	if( $user_id != '1' ){
-		$_GET['op'] = 'readme';		
+		$op = 'readme';		
 	}
 
-if($_GET['op'] == 'settings') {
+if($op == 'settings') {
 	
 	### Form Processing
 	if(onexin_bigdata_submitcheck('optionssubmit')) {
@@ -77,7 +77,7 @@ if($_GET['op'] == 'settings') {
 	include onexin_bigdata_template('onexin_bigdata:settings');
 	exit();	
 		
-}elseif($_GET['op'] == 'manage') {
+}elseif($op == 'manage') {
 	
 	if(onexin_bigdata_submitcheck('managesubmit')){	
 		// for all
@@ -139,11 +139,11 @@ if($_GET['op'] == 'settings') {
 	include onexin_bigdata_template('onexin_bigdata:manage');
 	exit();	
 		
-}elseif($_GET['op'] == 'readme') {
+}elseif($op == 'readme') {
 	
 	include onexin_bigdata_template('onexin_bigdata:readme');
 		
-}elseif($_GET['op'] == 'delete') {
+}elseif($op == 'delete') {
 	
 	// delete	
 	DB::query("DELETE FROM ".DB::table('plugin_onexin_bigdata')." WHERE bid='$bid'");
@@ -151,7 +151,7 @@ if($_GET['op'] == 'settings') {
 	onexin_bigdata_output("200");
 	exit();
 		
-}elseif($_GET['op'] == 'bigdata') {
+}elseif($op == 'bigdata') {
 	
 	$bids = !empty($_POST['bidarray']) ? onexin_bigdata_implode($_POST['bidarray']) : "'0'";
 		
@@ -175,12 +175,12 @@ if($_GET['op'] == 'settings') {
 	
 }else{
 	// esc & sanitize
-	$_GET['status'] = sanitize_text_field(esc_url_raw($_GET['status']));
-	$_GET['name'] = sanitize_text_field(esc_url_raw($_GET['name']));
-	$_GET['resid'] = sanitize_text_field(esc_url_raw($_GET['resid']));
+	$_status = sanitize_key(esc_url_raw($_GET['status']));
+	$_name = sanitize_text_field(esc_url_raw($_GET['name']));
+	$_resid = sanitize_key(esc_url_raw($_GET['resid']));
 	
-	if($_GET['op'] != 'stats') {
-		$_GET['status'] = ($_GET['status']!='') ? (int)$_GET['status'] : '0';
+	if($op != 'stats') {
+		$_status = ($_status!='') ? (int)$_status : '0';
 	}
 		
 	$daynum = !empty($_OBD['daynum'])?$_OBD['daynum']:365;
@@ -188,10 +188,10 @@ if($_GET['op'] == 'settings') {
 		$starttime	= !empty($_GET['starttime']) ? strtotime($_GET['starttime']) : $timestamp-$daynum*24*3600;
 		$endtime	= !empty($_GET['endtime']) ? strtotime($_GET['endtime']) : $timestamp;	
 	$wheresql .= ($bid>0) ? " AND bid='$bid'" : '';
-	$wheresql .= ($_GET['status']!='') ? " AND status = '$_GET[status]'" : '';	
-	$wheresql .= (!empty($_GET['name'])) ? " AND (name like '%$_GET[name]%' OR url like '%$_GET[name]%' OR ip like '%$_GET[name]%')" : '';	
-	$wheresql .= (!empty($_GET['resid'])) ? " AND resid = '$_GET[resid]'" : '';	
-	$wheresql .= ($_GET['stats'] != '0') ? " AND dateline>='$starttime' AND dateline<'$endtime'" : "";
+	$wheresql .= ($_status!='') ? " AND status = '{$_status}'" : '';	
+	$wheresql .= (!empty($_name)) ? " AND (name like '%{$_name}%' OR url like '%{$_name}%' OR ip like '%{$_name}%')" : '';	
+	$wheresql .= (!empty($_resid)) ? " AND resid = '{$_resid}'" : '';	
+	$wheresql .= ($_status != '0') ? " AND dateline>='$starttime' AND dateline<'$endtime'" : "";
 
 	// page
 	$page = empty($_GET['paged'])?0:intval($_GET['paged']);
@@ -212,9 +212,9 @@ if($_GET['op'] == 'settings') {
 		}
 		$list = onexin_bigdata_htmlspecialchars($list);		
 		$multi = onexin_bigdata_multi($count, $perpage, $page, $baseurl."&op=stats"
-			.(($_GET['op']=='stats') ? "&op=stats" : "")
-			.(($_GET['name']) ? "&name=".urlencode($_GET['name']) : "")
-			.(($_GET['status']) ? "&status=".intval($_GET['status']) : "")
+			.(($op=='stats') ? "&op=stats" : "")
+			.(($_name) ? "&name=".urlencode($_name) : "")
+			.(($_status) ? "&status=".intval($_status) : "")
 			.(($bid>0) ? "&bid=$bid" : "")
 			.(($starttime) ? "&starttime=".date('Y-m-d H:i', $starttime) : "")
 			.(($endtime) ? "&endtime=".date('Y-m-d H:i', $endtime) : "")
