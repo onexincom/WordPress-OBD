@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ONEXIN BIG DATA For Wordpress 4.0+
  * ============================================================================
@@ -6,14 +7,14 @@
  * 不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * @package    onexin_bigdata
- * @module	   config
- * @date	   2015-01-01
- * @author	   King
+ * @module     config
+ * @date       2015-01-01
+ * @author     King
  * @copyright  Copyright (c) 2015 Onexin Platform Inc. (http://www.onexin.com)
  */
- 
-if(!defined('OBD_CONTENT')) {
-	exit('Access Denied');
+
+if (!defined('OBD_CONTENT')) {
+    exit('Access Denied');
 }
 
 /*
@@ -36,5 +37,6 @@ $_OBD['origviews'] = '100,500';
 $_OBD['ignore'] = '0';
 $_OBD['worktime'] = '23|00|01|02|03|04|05|06|07';
 $_OBD['perpv'] = '1';
-$_OBD['oid'] = '10000';//change OID
+$_OBD['oid'] = '10000';
+//change OID
 $_OBD['token'] = 'd7aeb864648b';//change TOKEN

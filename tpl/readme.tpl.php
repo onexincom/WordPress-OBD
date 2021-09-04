@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ONEXIN BIG DATA For Wordpress 4.0+
  * ============================================================================
@@ -6,9 +7,9 @@
  * 不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * @package    onexin_bigdata
- * @module	   readme 
- * @date	   2014-09-16
- * @author	   King
+ * @module     readme
+ * @date       2014-09-16
+ * @author     King
  * @copyright  Copyright (c) 2014 Onexin Platform Inc. (http://www.onexin.com)
  */
 
@@ -17,9 +18,9 @@
 */
 
 //if(!defined('ABSPATH')) {
-	?>
+?>
 <script type="text/javascript">
 location.href = "https://we.onexin.com/?mod=bigdata&do=faq";
 </script>
-	<?php
+    <?php
 //}
