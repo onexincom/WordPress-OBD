@@ -50,7 +50,7 @@ $res = onexin_bigdata_htmlspecialchars($res);
     <td><input type="text" name="cronpublishdate" id="cronpublishdate" class="px vm" size="30" value="<?php echo $res['cronpublishdate'];?>" /></td>
   </tr>
   <tr>
-    <td colspan="2"><p class="o pns"> <a href="javascript:;" data-id="<?php esc_html_e($bid);?>" id="managesubmit" class="button-primary save alignleft"><?php esc_html_e('Update', 'onexin-bigdata'); ?></a> <a href="javascript:;" style="margin-left:10px;" onclick="$('#edit-' + <?php esc_html_e($bid);?>).remove();$('#post-' + <?php esc_html_e($bid);?>).show();" class="button-secondary cancel alignleft"><?php esc_html_e('Cancel', 'onexin-bigdata'); ?></a> </p></td>
+    <td colspan="2"><p class="o pns"> <a href="javascript:;" data-id="<?php esc_html_e($bid);?>" id="managesubmit" class="button-primary save alignleft"><?php esc_html_e('Update', 'onexin-bigdata'); ?></a> <a href="javascript:;" style="margin-left:10px;" onclick="jQuery('#edit-' + <?php esc_html_e($bid);?>).remove();jQuery('#post-' + <?php esc_html_e($bid);?>).show();" class="button-secondary cancel alignleft"><?php esc_html_e('Cancel', 'onexin-bigdata'); ?></a> </p></td>
   </tr>
 </table>
 <script>
