@@ -94,8 +94,6 @@ if ($op == 'settings') {
     exit();
 } elseif ($op == 'manage') {
     if (onexin_bigdata_submitcheck('managesubmit')) {
-        // for all
-        $_POST = onexin_bigdata_stripslashes($_POST);
 
         $url = !empty($_POST['url']) ? OBD::escape(sanitize_text_field($_POST['url'])) : '';
         $name = !empty($_POST['name']) ? OBD::escape(sanitize_text_field($_POST['name'])) : '';
