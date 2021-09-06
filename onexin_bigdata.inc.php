@@ -180,16 +180,13 @@ if ($op == 'settings') {
     $_name = OBD::escape(sanitize_text_field($_GET['name']));
     $_resid = OBD::escape(sanitize_key($_GET['resid']));
 
-    if ($op != 'stats') {
-        $_status = ($_status != '') ? (int)$_status : '0';
-    }
-
+    // stats page
     $daynum = !empty($_OBD['daynum']) ? $_OBD['daynum'] : 365;
     $wheresql = '1=1 ';
     $starttime  = !empty($_GET['starttime']) ? strtotime($_GET['starttime']) : $timestamp - $daynum * 24 * 3600;
     $endtime    = !empty($_GET['endtime']) ? strtotime($_GET['endtime']) : $timestamp;
     $wheresql .= ($bid > 0) ? " AND bid='$bid'" : '';
-    $wheresql .= ($_status != '') ? " AND status = '{$_status}'" : '';
+    $wheresql .= ($_status !== '') ? " AND status = '{$_status}'" : '';
     $wheresql .= (!empty($_name)) ? " AND (name like '%{$_name}%' OR url like '%{$_name}%' OR ip like '%{$_name}%')" : '';
     $wheresql .= (!empty($_resid)) ? " AND resid = '{$_resid}'" : '';
     $wheresql .= ($_status != '0') ? " AND dateline>='$starttime' AND dateline<'$endtime'" : "";
@@ -214,8 +211,7 @@ if ($op == 'settings') {
             $list[] = $value;
         }
         $list = onexin_bigdata_htmlspecialchars($list);
-        $multi = onexin_bigdata_multi($count, $perpage, $page, $baseurl . "&op=stats"
-            . (($op == 'stats') ? "&op=stats" : "")
+        $multi = onexin_bigdata_multi($count, $perpage, $page, $baseurl
             . (($_name) ? "&name=" . urlencode($_name) : "")
             . (($_status) ? "&status=" . intval($_status) : "")
             . (($bid > 0) ? "&bid=$bid" : "")
