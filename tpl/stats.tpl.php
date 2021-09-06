@@ -19,12 +19,15 @@ $list = onexin_bigdata_htmlspecialchars($list);
 <div class="wrap">
   <h2 class="z"> <?php esc_html_e('OBD BigData', 'onexin-bigdata'); ?> <a href="javascript:;" class="add-new-h2 iconEdit" data-id="0"><?php esc_html_e('Add New', 'onexin-bigdata'); ?></a></h2>
     <ul class="subsubsub">
-      <li><a href="<?php esc_html_e($baseurl);?>&amp;op=stats"<?php if ($_GET['op'] == 'stats') {
+      <li><a href="<?php esc_html_e($baseurl);?>"<?php if (!isset($_GET['status'])) {
             echo ' class="current"';
-                   }?>><?php esc_html_e('Stats', 'onexin-bigdata'); ?></a> |</li>
-      <li><a href="<?php esc_html_e($baseurl);?>"<?php if (empty($_GET['op'])) {
-            echo ' class="current"';
-                   }?>><?php esc_html_e('Standby List', 'onexin-bigdata'); ?></a></li>
+                    }?>><?php esc_html_e('Stats', 'onexin-bigdata'); ?></a> |</li>
+      <li><a href="<?php esc_html_e($baseurl);?>&amp;status=0"<?php if ($_GET['status'] == '0') { 
+            echo ' class="current"'; 
+                    }?>><?php esc_html_e('Standby List', 'onexin-bigdata'); ?></a> |</li>
+      <li><a href="<?php echo $baseurl;?>&amp;status=1" <?php if($_GET['status'] == '1') {
+            echo ' class="current"'; 
+                    }?>><?php esc_html_e( 'Posted', 'onexin-bigdata' ); ?></a></li>
     </ul>
     
   <div id="obd-content"><!-- style="min-width:660px; max-width:780px;" -->
