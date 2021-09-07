@@ -34,6 +34,23 @@ function onexin_bigdata_filter($content, $replace)
     return $content;
 }
 
+// sanitize
+function onexin_bigdata_sanitize($string)
+{
+
+    if (empty($string)) {
+        return $string;
+    }
+    if (is_array($string)) {
+        foreach ($string as $key => $val) {
+            $string[sanitize_text_field($key)] = onexin_bigdata_sanitize($val);
+        }
+    } else {
+        $string = sanitize_text_field($string);
+    }
+    return $string;
+}
+
 // stripslashes
 function onexin_bigdata_stripslashes($string)
 {

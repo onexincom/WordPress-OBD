@@ -67,7 +67,7 @@ if (empty($_POST['bigdata'])) {
     if (empty($_POST['urls'])) {
         $wheresql = "`status` = '0'";
         if (!empty($_GET['rids'])) {
-            $rids = onexin_bigdata_implode(explode(',', $_GET['rids']));
+            $rids = onexin_bigdata_implode(explode(',', onexin_bigdata_sanitize($_GET['rids'])));
             $wheresql .= " AND `resid` IN ($rids)";
         }
         $urls = OBD::fetch_all("SELECT url,k,catid,i,resid FROM " . OBD::table('plugin_onexin_bigdata') . " WHERE $wheresql ORDER BY bid ASC LIMIT 0,10");
@@ -79,8 +79,10 @@ if (empty($_POST['bigdata'])) {
         }
         exit;
     }
+    
+    // check json
+    $_POST['urls'] = onexin_bigdata_sanitize($_POST['urls']);
     $_POST['urls'] = json_decode($_POST['urls'], true);
-    $_POST['urls'] = onexin_bigdata_charset($_POST['urls']);
     if (!is_array($_POST['urls'])) {
         onexin_bigdata_output("100", "Unknow json");
     }
@@ -95,20 +97,18 @@ if (empty($_POST['bigdata'])) {
 
     // insert data
     $timestamp = time();
-    $catid = sanitize_text_field($_POST['catid']);
-    $import = sanitize_text_field($_import);
     $urls = $inserts = array();
     foreach ($_POST['urls'] as $key => $val) {
         if (!empty($val['url'])) {
             $urls[] = " (
-							'" . OBD::escape($val['name']) . "', 
-							'" . OBD::escape($val['url']) . "', 
-							'" . OBD::escape($val['k']) . "', 
-							'" . OBD::escape($val['resid']) . "', 
-							'$timestamp', 
-							'" . OBD::escape(!empty($val['catid']) ? $val['catid'] : $catid) . "', 
-							'" . OBD::escape($import) . "'
-						)";
+                            '" . OBD::escape(sanitize_text_field($val['name'])) . "', 
+                            '" . OBD::escape(sanitize_url($val['url'])) . "', 
+                            '" . OBD::escape(sanitize_key($val['k'])) . "', 
+                            '" . OBD::escape(sanitize_key($val['resid'])) . "', 
+                            '$timestamp', 
+                            '" . OBD::escape(sanitize_text_field(!empty($val['catid']) ? $val['catid'] : $_POST['catid'])) . "', 
+                            '" . OBD::escape(sanitize_key($_import)) . "'
+                        )";
         }
     }
 
