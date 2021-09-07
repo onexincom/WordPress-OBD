@@ -65,9 +65,9 @@ $list = onexin_bigdata_htmlspecialchars($list);
             <tbody>
               <?php if (is_array($list)) {
                     foreach ($list as $value) { ?>
-              <tr id="post-<?php echo $value['bid'];?>">
-                <td title="<?php echo $value['resid'];?>"><input type="checkbox" name="bidarray[]" value="<?php echo $value['bid'];?>" class="checkbox vm"></td>
-                <td title="<?php echo $value['resid'];?>"><?php if ($value['status'] == '1') { ?>
+              <tr id="post-<?php echo sanitize_key($value['bid']);?>">
+                <td title="<?php echo sanitize_key($value['resid']);?>"><input type="checkbox" name="bidarray[]" value="<?php echo sanitize_key($value['bid']);?>" class="checkbox vm"></td>
+                <td title="<?php echo sanitize_key($value['resid']);?>"><?php if ($value['status'] == '1') { ?>
                                         <?php esc_html_e('Posted', 'onexin-bigdata'); ?>
                            <?php } elseif ($value['status'] == '2') { ?>
                                <?php esc_html_e('Draft', 'onexin-bigdata'); ?>
@@ -78,19 +78,19 @@ $list = onexin_bigdata_htmlspecialchars($list);
                            <?php } ?></td>
                 <td><div style="max-width:500px;">
                                             <?php if ($value['link']) { ?>
-                    (<a href="<?php echo $value['link'];?>" target="_blank">View</a>)
-                    (<a href="post.php?post=<?php echo str_replace("../?p=", "", $value['link']);?>&action=edit" target="_blank">Edit</a>)
+                    (<a href="<?php echo sanitize_url($value['link']);?>" target="_blank">View</a>)
+                    (<a href="post.php?post=<?php echo sanitize_url(str_replace("../?p=", "", $value['link']));?>&action=edit" target="_blank">Edit</a>)
                                             <?php } elseif ($value['ip']) { ?>
-                    (<?php echo $value['ip'];?>)
+                    (<?php esc_html_e($value['ip']);?>)
                                             <?php } ?>
-                    (<a href="<?php esc_html_e($baseurl);?>&amp;op=stats&amp;bid=<?php echo $value['bid'];?>"><?php echo $value['bid'];?></a>) <a href="<?php echo $value['url'];?>" target="_blank">
+                    (<a href="<?php esc_html_e($baseurl);?>&amp;op=stats&amp;bid=<?php echo sanitize_key($value['bid']);?>"><?php echo sanitize_key($value['bid']);?></a>) <a href="<?php echo sanitize_url($value['url']);?>" target="_blank">
                                             <?php if ($value['name']) { ?>
-                                                <?php echo $value['name'];?><br>
+                                                <?php esc_html_e($value['name']);?><br>
                                             <?php } ?>
-                                            <?php echo $value['url'];?></a></div></td>
-                <td><?php echo $value['catid'];?> / <?php echo $value['i'];?><br>
+                                            <?php echo sanitize_url($value['url']);?></a></div></td>
+                <td><?php esc_html_e($value['catid']);?> / <?php echo sanitize_key($value['i']);?><br>
                                             <?php echo gmdate('Y-m-d H:i:s', $value['dateline'] + get_option('gmt_offset') * HOUR_IN_SECONDS)?></td>
-                <td><a href="javascript:;" title="edit" class="iconEdit" data-id="<?php echo $value['bid'];?>"><?php esc_html_e('Edit', 'onexin-bigdata'); ?></a> <a href="javascript:;" title="delete" class="iconDel" data-id="<?php echo $value['bid'];?>"><?php esc_html_e('Delete', 'onexin-bigdata'); ?></a></td>
+                <td><a href="javascript:;" title="edit" class="iconEdit" data-id="<?php echo sanitize_key($value['bid']);?>"><?php esc_html_e('Edit', 'onexin-bigdata'); ?></a> <a href="javascript:;" title="delete" class="iconDel" data-id="<?php echo sanitize_key($value['bid']);?>"><?php esc_html_e('Delete', 'onexin-bigdata'); ?></a></td>
               </tr>
                     <?php }
               } ?>
