@@ -6,7 +6,7 @@
  * Plugin URI: https://github.com/onexincom/WordPress-OBD
  * Author: Onexin Inc.
  * Author URI: https://www.onexin.com
- * Version: 1.11.0
+ * Version: 1.11.10
  * License: GPLv2 or later
  * Requires at least: 4.9
  * Requires PHP: 5.6
